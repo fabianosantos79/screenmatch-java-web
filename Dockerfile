@@ -1,4 +1,11 @@
-FROM ubuntu:latest
-LABEL authors="Windows 10"
+FROM openjdk:17-jdk-alpine
+LABEL authors="Fabiano"
 
-ENTRYPOINT ["top", "-b"]
+RUN mkdir /app
+WORKDIR /app
+COPY target/*.jar /app/app.jar
+EXPOSE 8080
+CMD ["java", "-jar", "/app/app.jar"]
+
+
+
